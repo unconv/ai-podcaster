@@ -86,7 +86,7 @@ def generate_dialog(number_of_dialogs):
     dialogs = []
 
     for _ in range(0, number_of_dialogs):
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=messages,
             functions=[
