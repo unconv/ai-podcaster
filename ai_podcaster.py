@@ -79,7 +79,7 @@ messages = [
 
 podcast_id = f"{time.time()}"
 
-def generate_dialog(number_of_dialogs):
+def generate_dialog(number_of_dialogs, debug=False):
     transcript_file_name = f"podcasts/podcast{podcast_id}.txt"
     transcript_file = open(transcript_file_name, "w")
 
@@ -119,12 +119,18 @@ def generate_dialog(number_of_dialogs):
             }
         )
 
-        message = response["choices"][0]["message"] # type: ignore
+        message = response.choices[0].message # type: ignore
+
+        if debug:
+            print(f"response: {response}")
+            print(f"usage: {dict(response).get('usage')}\n")
+            print(f"dump_json: {response.model_dump_json(indent=2)}\n")
+            print(f"message: {message}\n")
 
         messages.append(message)
 
-        function_call = message["function_call"]
-        arguments = json.loads(function_call["arguments"])
+        function_call = message.function_call
+        arguments = json.loads(function_call.arguments)
 
         transcript_file.write(arguments['speaker'] + " says: " + arguments['content'] + "\n")
 
