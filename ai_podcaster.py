@@ -166,7 +166,7 @@ except RateLimitError:
 
 concat_file.close()
 
-podcast_file = f"podcasts/podcast{podcast_id}.wav"
+podcast_file = f"podcasts/podcast{podcast_id}.mp3"
 
 print("Concatenating audio")
 subprocess.run(f"ffmpeg -f concat -safe 0 -i concat.txt -c copy {podcast_file}", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
