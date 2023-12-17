@@ -27,11 +27,7 @@ else:
 if len(sys.argv) > 2:
     dialog_count = int(sys.argv[2])
 else:
-    dialog_count = int(input("How many dialogs do you want? [5]\n"))
-    print()
-
-    if dialog_count == 0:
-        dialog_count = 5
+    dialog_count = int(input("How many dialogs do you want? [5]\n") or "5")
 
 if not os.path.exists("dialogs"):
     os.mkdir("dialogs")
