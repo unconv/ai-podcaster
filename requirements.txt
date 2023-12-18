@@ -1,2 +1,3 @@
 openai
 elevenlabs
+python-dotenv
