@@ -4,3 +4,4 @@ __pycache__
 podcast.txt
 .idea/
 concat.txt
+.env
