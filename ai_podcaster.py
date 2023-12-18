@@ -10,9 +10,17 @@ import sys
 import os
 
 from dotenv import load_dotenv
+
+print_api_keys = False
+
 load_dotenv()
 elevenlabs_key = os.getenv("ELEVENLABS_API_KEY")
 # OpenAI imports environment variable OPENAI_API_KEY by default
+
+if print_api_keys:
+    print(f"ELEVENLABS_API_KEY: {elevenlabs_key}")
+    print(f"OPENAI_API_KEY: {os.getenv("OPENAI_API_KEY")}")
+
 
 if elevenlabs_key:
     set_api_key(elevenlabs_key)
